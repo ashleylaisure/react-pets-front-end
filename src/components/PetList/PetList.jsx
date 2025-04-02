@@ -5,16 +5,18 @@ const PetList = (props) => {
     console.log(props);
 
     return (
-        <div>
+        <div className="sidebar-container">
             <h1>Pet List</h1>
-            <div>
+            <div className="list-container">
                 {!props.pets.length ? (<h2>No Pets Yet!</h2>) : (
 
                     <ul>
                         {props.pets.map((pet) => (
                             <li 
                                 key={pet._id}
-                                style={{ cursor: 'pointer', color: "#646CFF" }}
+                                style={{ cursor: 'pointer', color: "#646CFF" , listStyle: "none" }}
+                                
+                                // onClick={() => console.log(pet)}
                                 // call the handleSelect() function on click, passing the pet. 
                                 onClick={() => props.handleSelect(pet)}
                             >
@@ -22,10 +24,11 @@ const PetList = (props) => {
                             </li>
                         ))}
                     </ul>
+
                 )}
             </div>
 
-            <button onClick={props.handleFormView}>{props.isFormOpen ? 'Close Form' : 'New Pet'}</button>
+            <button onClick={props.handleFormView}>{props.isFormOpen ? 'Close Form' : 'Add New Pet'}</button>
         </div>
     );
 };
